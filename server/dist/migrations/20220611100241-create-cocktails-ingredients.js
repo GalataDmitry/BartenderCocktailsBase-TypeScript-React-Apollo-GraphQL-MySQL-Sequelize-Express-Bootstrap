@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -9,34 +9,38 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 module.exports = {
-    up(queryInterface, DataTypes) {
+    up(queryInterface, Sequelize) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield queryInterface.createTable('Cocktails', {
+            yield queryInterface.createTable('CocktailsIngredients', {
                 id: {
                     allowNull: false,
                     autoIncrement: true,
                     primaryKey: true,
-                    type: DataTypes.INTEGER
+                    type: Sequelize.INTEGER
                 },
-                cockt_name: {
+                cocktId: {
                     allowNull: false,
-                    type: DataTypes.STRING
+                    type: Sequelize.INTEGER,
+                    references: {
+                        model: 'Cocktails',
+                        key: 'id'
+                    },
                 },
-                createdAt: {
+                ingId: {
                     allowNull: false,
-                    type: DataTypes.DATE
-                },
-                updatedAt: {
-                    allowNull: false,
-                    type: DataTypes.DATE
+                    type: Sequelize.INTEGER,
+                    references: {
+                        model: 'Ingredients',
+                        key: 'id'
+                    },
                 }
             });
         });
     },
     down(queryInterface) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield queryInterface.dropTable('Cocktails');
+            yield queryInterface.dropTable('CocktailsIngredients');
         });
     }
 };
-//# sourceMappingURL=20220610191747-create-cocktails.js.map
+//# sourceMappingURL=20220611100241-create-cocktails-ingredients.js.map

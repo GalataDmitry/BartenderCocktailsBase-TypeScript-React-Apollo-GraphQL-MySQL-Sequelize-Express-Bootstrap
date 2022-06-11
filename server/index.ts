@@ -21,6 +21,3 @@ app.listen(PORT, (error: any) => error ?
 _db.sequelize.authenticate()
     .then(() => console.log('db successfully connected'))
     .catch((error: any) => console.log(`connect error${error}`))
-// _db.sequelize.sync()
-//     .then(() => console.log('success synced'))
-//     .catch((error: any) => `sync error${error}`)

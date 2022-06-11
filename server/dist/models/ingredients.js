@@ -1,20 +1,19 @@
-'use strict';
-import { Model } from "sequelize";
+import { Model } from 'sequelize';
 module.exports = (sequelize, DataTypes) => {
-    class Cocktails extends Model {
+    class Ingredients extends Model {
         static associate(models) {
-            Cocktails.belongsToMany(models.Ingredients, { through: 'CocktailsIngredients' });
-            Cocktails.hasOne(models.Descriptions, { foreignKey: 'cocktId' });
+            Ingredients.belongsToMany(models.Cocktails, { through: 'CocktailsIngredients' });
+            Ingredients.belongsToMany(models.Volumes, { through: 'IngredientsVolumes' });
         }
     }
-    Cocktails.init({
+    Ingredients.init({
         id: {
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
             type: DataTypes.INTEGER
         },
-        cockt_name: {
+        ing_name: {
             allowNull: false,
             type: DataTypes.STRING
         },
@@ -28,8 +27,8 @@ module.exports = (sequelize, DataTypes) => {
         }
     }, {
         sequelize,
-        modelName: 'Cocktails',
+        modelName: 'Ingredients',
     });
-    return Cocktails;
+    return Ingredients;
 };
-//# sourceMappingURL=cocktails.js.map
+//# sourceMappingURL=ingredients.js.map

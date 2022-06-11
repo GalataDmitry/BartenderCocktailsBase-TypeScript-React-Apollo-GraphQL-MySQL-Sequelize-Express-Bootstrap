@@ -6,3 +6,4 @@ module.exports = {
   'seeders-path': path.resolve('dist', 'seeders'),
   'migrations-path': path.resolve('dist', 'migrations')
 };
+

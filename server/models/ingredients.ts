@@ -1,27 +1,26 @@
-'use strict'
-import {InferAttributes, InferCreationAttributes, Model} from "sequelize"
+import {InferAttributes, InferCreationAttributes, Model} from 'sequelize'
 
 module.exports = (sequelize: any, DataTypes: any) => {
-    class Cocktails extends Model<InferAttributes<Cocktails>, InferCreationAttributes<Cocktails>> {
+    class Ingredients extends Model<InferAttributes<Ingredients>, InferCreationAttributes<Ingredients>> {
         declare id: number
-        declare cockt_name: string
+        declare ing_name: string
         declare createdAt: Date
         declare updatedAt: Date
 
         static associate(models: any) {
-            Cocktails.belongsToMany(models.Ingredients, {through: 'CocktailsIngredients'})
-            Cocktails.hasOne(models.Descriptions, {foreignKey: 'cocktId'})
+            Ingredients.belongsToMany(models.Cocktails, {through: 'CocktailsIngredients'})
+            Ingredients.belongsToMany(models.Volumes, {through: 'IngredientsVolumes'})
         }
     }
 
-    Cocktails.init({
+    Ingredients.init({
         id: {
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
             type: DataTypes.INTEGER
         },
-        cockt_name: {
+        ing_name: {
             allowNull: false,
             type: DataTypes.STRING
         },
@@ -35,8 +34,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
         }
     }, {
         sequelize,
-        modelName: 'Cocktails',
+        modelName: 'Ingredients',
     })
-    return Cocktails
+    return Ingredients
 }
-

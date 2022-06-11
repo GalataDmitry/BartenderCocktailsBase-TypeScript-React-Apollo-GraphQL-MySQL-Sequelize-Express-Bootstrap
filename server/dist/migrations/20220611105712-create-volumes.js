@@ -9,34 +9,26 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 module.exports = {
-    up(queryInterface, DataTypes) {
+    up(queryInterface, Sequelize) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield queryInterface.createTable('Cocktails', {
+            yield queryInterface.createTable('Volumes', {
                 id: {
                     allowNull: false,
                     autoIncrement: true,
                     primaryKey: true,
-                    type: DataTypes.INTEGER
+                    type: Sequelize.INTEGER
                 },
-                cockt_name: {
+                volume: {
                     allowNull: false,
-                    type: DataTypes.STRING
-                },
-                createdAt: {
-                    allowNull: false,
-                    type: DataTypes.DATE
-                },
-                updatedAt: {
-                    allowNull: false,
-                    type: DataTypes.DATE
+                    type: Sequelize.INTEGER
                 }
             });
         });
     },
     down(queryInterface) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield queryInterface.dropTable('Cocktails');
+            yield queryInterface.dropTable('Volumes');
         });
     }
 };
-//# sourceMappingURL=20220610191747-create-cocktails.js.map
+//# sourceMappingURL=20220611105712-create-volumes.js.map
