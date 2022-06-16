@@ -1,8 +1,7 @@
-'use strict'
 import {InferAttributes, InferCreationAttributes, Model} from "sequelize"
 
 module.exports = (sequelize: any, DataTypes: any) => {
-    class Cocktails extends Model<InferAttributes<Cocktails>, InferCreationAttributes<Cocktails>> {
+     class Cocktails extends Model<InferAttributes<Cocktails>, InferCreationAttributes<Cocktails>> {
         declare id: number
         declare cockt_name: string
         declare createdAt: Date
@@ -39,4 +38,3 @@ module.exports = (sequelize: any, DataTypes: any) => {
     })
     return Cocktails
 }
-
