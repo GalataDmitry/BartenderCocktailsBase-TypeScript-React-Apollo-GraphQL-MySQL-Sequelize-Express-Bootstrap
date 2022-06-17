@@ -1,6 +1,6 @@
 import React, {FC} from "react"
 import WithData from "./hoc/WithData"
-import {IAddCocktails} from "./types/types"
+import {IAddCocktails} from "../reactTypes/reactTypes"
 
 const AddCocktails: FC<IAddCocktails<string, number>> = ({cockt_name, onChangeFunction, resetState}) => {
 
