@@ -1,8 +1,8 @@
 import React, {FC} from "react"
-import WithData from "./hoc/WithData"
-import {IAddCocktails} from "../reactTypes/reactTypes"
+// import WithData from "./hoc/WithData"
+import {ICreateCocktails} from "../reactTypes/reactTypes"
 
-const AddCocktails: FC<IAddCocktails<string, number>> = ({cockt_name, onChangeFunction, resetState}) => {
+const AddCocktails: FC<ICreateCocktails<string, number>> = ({cockt_name, onChangeFunction, resetState}) => {
 
     return <div className='container-fluid'>
         <div className="row">
@@ -16,7 +16,7 @@ const AddCocktails: FC<IAddCocktails<string, number>> = ({cockt_name, onChangeFu
             <div className="row">
                 <div className="col mt-3">
                     <button
-                        onClick={() => resetState!()}
+                        onClick={(event) => resetState!(event)}
                         className='btn btn-info'>
                         Add cocktail
                     </button>
@@ -26,4 +26,4 @@ const AddCocktails: FC<IAddCocktails<string, number>> = ({cockt_name, onChangeFu
     </div>
 }
 
-export default WithData(AddCocktails)
+export default AddCocktails

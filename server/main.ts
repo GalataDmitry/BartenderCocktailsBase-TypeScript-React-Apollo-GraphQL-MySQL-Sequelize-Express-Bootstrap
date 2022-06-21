@@ -3,6 +3,7 @@ import 'dotenv/config'
 import {buildSchema} from "type-graphql"
 import {graphqlHTTP} from 'express-graphql'
 import {GetAllCocktails} from "./graphqlSchema/getAllCocktails"
+import {CreateCocktail} from "./graphqlSchema/createCocktail"
 import express from 'express'
 import cors from 'cors'
 import path from 'path'
@@ -12,6 +13,7 @@ const PORT: number | string = process?.env?.PORT || 5050
 const app = express()
 
 app.use(cors())
+app.use(express.json())
 app.listen(PORT, () => console.log(`[---> server run on port ${PORT}`))
 
 db.sequelize.authenticate()
@@ -20,7 +22,7 @@ db.sequelize.authenticate()
 
 const graphqlConnect = async () => {
     const schema = await buildSchema({
-        resolvers: [GetAllCocktails],
+        resolvers: [GetAllCocktails, CreateCocktail],
         emitSchemaFile: path.resolve(__dirname, "schema.gql")
     })
     app.use('/graphql', graphqlHTTP({

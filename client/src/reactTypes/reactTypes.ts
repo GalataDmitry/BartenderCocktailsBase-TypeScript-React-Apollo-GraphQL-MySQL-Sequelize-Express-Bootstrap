@@ -1,9 +1,9 @@
-import React from "react"
+import {ChangeEvent, MouseEvent} from "react"
 
-export interface IAddCocktails<T, U> {
+export interface ICreateCocktails<T, U> {
     cockt_name?: T
     ingredient?: T
     volume?: U
-    onChangeFunction?: (event: React.ChangeEvent<HTMLInputElement>) => void
-    resetState?: () => void
+    onChangeFunction?: (event: ChangeEvent<HTMLInputElement>) => void
+    resetState?: (event: MouseEvent<HTMLButtonElement>) => void
 }

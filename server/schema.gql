@@ -3,18 +3,42 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
-type CocktailsType {
+"""
+The javascript `Date` as string. Type represents date and time as the ISO Date string.
+"""
+scalar DateTime
+
+type DescriptionType {
+  cockt_desc: String!
+  id: ID!
+}
+
+type GetAllCocktailsType {
+  Description: DescriptionType!
+  Ingredients: [IngredientType!]!
   cockt_name: String!
   createdAt: DateTime!
   id: ID!
   updatedAt: DateTime!
 }
 
-"""
-The javascript `Date` as string. Type represents date and time as the ISO Date string.
-"""
-scalar DateTime
+type IngredientType {
+  Volumes: [VolumeType!]!
+  createdAt: DateTime!
+  id: ID!
+  ing_name: String!
+  updatedAt: DateTime!
+}
+
+type Mutation {
+  createCocktail: [GetAllCocktailsType!]!
+}
 
 type Query {
-  getAllCocktails: [CocktailsType!]!
+  getAllCocktails: [GetAllCocktailsType!]!
+}
+
+type VolumeType {
+  id: ID!
+  volume: String!
 }

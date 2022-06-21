@@ -1,18 +1,24 @@
 import {Resolver, Query} from "type-graphql"
-const {Cocktails} = require ('../models')
-const CocktailsType = require('./types/CocktailsType')
+import {GetAllCocktailsType} from './types/cocktailsTypes'
+const {Cocktails, Ingredients, Volumes, Descriptions} = require ('../models')
 
 @Resolver()
 export class GetAllCocktails {
-    @Query(returns => [CocktailsType])
+    @Query(returns => [GetAllCocktailsType])
     async getAllCocktails() {
         try {
-            return await Cocktails.findAll()
+            const allCockt = await Cocktails.findAll({
+                include: [Descriptions, {model: Ingredients, include: [{model: Volumes}]}]
+            })
+            console.log(JSON.stringify(allCockt, null, 2));
+            return allCockt
         } catch (error) {
             console.log(`[---> getAllCocktails error: ${error}`)
         }
     }
 }
+
+//___________________________________________________________//
 
 
 // @ObjectType()

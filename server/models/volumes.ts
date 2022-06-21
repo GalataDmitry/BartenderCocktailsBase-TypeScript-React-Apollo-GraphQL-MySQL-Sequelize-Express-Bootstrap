@@ -7,7 +7,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
         declare volume: number
 
         static associate(models: any) {
-            Volumes.belongsToMany(models.Ingredients, {through: 'IngredientsVolumes'})
+            this.belongsToMany(models.Ingredients, {through: 'IngredientsVolumes', foreignKey: 'ingId'})
         }
     }
 
