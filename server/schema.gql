@@ -3,6 +3,21 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+input CocktIngs {
+  ing_name: String!
+  volume: String!
+}
+
+input CocktNameDesc {
+  cockt_desc: String!
+  cockt_name: String!
+}
+
+input CreateCocktailType {
+  cocktIngs: [CocktIngs!]!
+  cocktNameDesc: CocktNameDesc!
+}
+
 """
 The javascript `Date` as string. Type represents date and time as the ISO Date string.
 """
@@ -31,7 +46,7 @@ type IngredientType {
 }
 
 type Mutation {
-  createCocktail: [GetAllCocktailsType!]!
+  createCocktail(cocktData: [CreateCocktailType!]!): [GetAllCocktailsType!]!
 }
 
 type Query {

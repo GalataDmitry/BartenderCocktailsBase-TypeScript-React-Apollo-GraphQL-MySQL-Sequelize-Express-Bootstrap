@@ -1,4 +1,3 @@
-// const CocktailsIngredients = require('./cocktailsingredients')
 import {InferAttributes, InferCreationAttributes, Model} from 'sequelize'
 
 module.exports = (sequelize: any, DataTypes: any) => {
@@ -9,8 +8,8 @@ module.exports = (sequelize: any, DataTypes: any) => {
         declare updatedAt: Date
 
         static associate(models: any) {
-            this.belongsToMany(models.Cocktails, {through: 'CocktailsIngredients', foreignKey: 'cocktId'})
-            this.belongsToMany(models.Volumes, {through: 'IngredientsVolumes', foreignKey: 'volId'})
+            Ingredients.belongsToMany(models.Cocktails, {through: 'CocktailsIngredients', foreignKey: 'ingId'})
+            Ingredients.belongsToMany(models.Volumes, {through: 'IngredientsVolumes', foreignKey: 'volId'})
         }
     }
 

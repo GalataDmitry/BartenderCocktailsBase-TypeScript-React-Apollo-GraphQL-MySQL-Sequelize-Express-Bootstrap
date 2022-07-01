@@ -3,14 +3,17 @@ interface IIngredients {
     ing_name: string
     Volumes: IVolumes[]
 }
+
 interface IVolumes {
     id: number
     volume: string
 }
+
 interface IDescription {
     id: number
     cockt_desc: string
 }
+
 interface ICocktail {
     id: number
     cockt_name: string
@@ -23,7 +26,10 @@ export interface IGetAllCocktailsData {
 }
 
 export interface ICreateCocktailInputType {
-    cockt_name?: string
-    ing_name?: string[]
-    cockt_desc?: string
+     cockt_name: string,
+     cockt_desc: string,
+}
+
+export interface ICreateCocktailInputType_1 {
+    [key: string]: string
 }

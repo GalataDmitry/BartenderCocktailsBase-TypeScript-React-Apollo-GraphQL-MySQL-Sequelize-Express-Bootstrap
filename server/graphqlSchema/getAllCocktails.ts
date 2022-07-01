@@ -8,9 +8,9 @@ export class GetAllCocktails {
     async getAllCocktails() {
         try {
             const allCockt = await Cocktails.findAll({
-                include: [Descriptions, {model: Ingredients, include: [{model: Volumes}]}]
+                include: [Descriptions, {model: Ingredients, include: Volumes}]
             })
-            console.log(JSON.stringify(allCockt, null, 2));
+            // console.log(JSON.stringify(allCockt, null, 2));
             return allCockt
         } catch (error) {
             console.log(`[---> getAllCocktails error: ${error}`)

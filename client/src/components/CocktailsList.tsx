@@ -6,6 +6,8 @@ import {GET_ALL_COCKTAILS} from "../query/getAllCocktails";
 
 const CocktailsList: FC = () => {
     const {loading, error, data} = useQuery<IGetAllCocktailsData>(GET_ALL_COCKTAILS)
+    if (loading) return <>Loading</>
+    if (error) return <>{error}</>
     console.log('ебана дэйта', data)
     return <div className='container-fluid'>
         <div className="row">
@@ -19,23 +21,20 @@ const CocktailsList: FC = () => {
                             </button>
                         </div>
                         <div className="col">
-                            {data?.getAllCocktails
-                                .map(cocktail => cocktail.Description.cockt_desc)}
+                            {cocktail.Description.cockt_desc}
                         </div>
                         <div className="col">
-                            {data?.getAllCocktails
-                                .map(cocktail => cocktail.Ingredients
+                            {cocktail.Ingredients
                                     .map(ingredient => {
                                         return <div>{ingredient.ing_name}</div>
-                                    }))}
+                                    })}
                         </div>
                         <div className="col">
-                            {data?.getAllCocktails
-                                .map(cocktail => cocktail.Ingredients
+                            { cocktail.Ingredients
                                     .map(ingredient => ingredient.Volumes
                                         .map(volume => {
                                             return <div>{volume.volume}</div>
-                                        })))}
+                                        }))}
                         </div>
 
                     </div>

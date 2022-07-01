@@ -4,6 +4,7 @@ export interface ICreateCocktails<T, U> {
     cockt_name?: T
     ingredient?: T
     volume?: U
-    onChangeFunction?: (event: ChangeEvent<HTMLInputElement>) => void
-    resetState?: (event: MouseEvent<HTMLButtonElement>) => void
+    onChangeMap?: (event: ChangeEvent<HTMLInputElement>, index: number) => void
+    onChange?: (event: ChangeEvent<HTMLInputElement>) => void
+    reset?: (event: MouseEvent<HTMLButtonElement>) => void
 }

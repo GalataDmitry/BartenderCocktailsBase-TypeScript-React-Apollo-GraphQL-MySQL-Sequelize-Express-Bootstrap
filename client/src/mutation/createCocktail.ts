@@ -1,9 +1,10 @@
 import {gql} from "@apollo/client"
-
+//$cocktData: CreateCocktailType!
+//cocktData: $cocktData
 export const CREATE_COCKTAIL = gql(`
-        mutation createCocktail ($cockt_name: String!, $ing_name: [String!]!, $cockt_desc: String!)
+        mutation createCocktail ($cocktData: [CreateCocktailType!]!)
             {
-                createCocktail (cockt_name: $cockt_name, ing_name: $ing_name, cockt_desc: $cockt_desc)
+                createCocktail (cocktData: $cocktData)
                     {id, cockt_name}
             }
 `)
